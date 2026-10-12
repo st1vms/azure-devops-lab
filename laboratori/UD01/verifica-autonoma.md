@@ -36,3 +36,19 @@ Il comando diagnostico fondamentale è:
 ```bash
 az account show
 ```
+
+## Autovalutazione
+
+Assegna a ogni capacità `Completato` oppure `Da ripetere`:
+
+| Capacità | Valutazione |
+|---|---|
+| Distinguo PowerShell dal terminale Ubuntu | Completato |
+| Verifico che Ubuntu utilizzi WSL 2 | Completato |
+| Riconosco la radice del repository Git | Completato |
+| Verifico il remote prima del push | Completato |
+| Distinguo file non tracciato e file in staging | Completato |
+| Inserisco in staging soltanto il file richiesto | Completato |
+| Verifico lo stesso commit in locale e su GitHub | Completato |
+| Verifico lo stato dell'invito al docente | Completato |
+| Riconosco ed escludo dati riservati | Completato |
