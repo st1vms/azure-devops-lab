@@ -1,3 +1,9 @@
+# Repo specific
+
+# UD02
+01_VARIABILI_LAB.sh
+
+
 # Visual Studio Code
 .vscode/*
 !.vscode/settings.json
