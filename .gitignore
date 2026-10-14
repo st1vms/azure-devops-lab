@@ -1,8 +1,10 @@
 # Repo specific
 
-# UD02
+# Environment script
 01_VARIABILI_LAB.sh
 
+# Any secret
+*secret*
 
 # Visual Studio Code
 .vscode/*
