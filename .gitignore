@@ -1,7 +1,7 @@
 # Repo specific
 
 # Environment script
-01_VARIABILI_LAB.sh
+*_VARIABILI_*.sh
 
 # Any secret
 *secret*
