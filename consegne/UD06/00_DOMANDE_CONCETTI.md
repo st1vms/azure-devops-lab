@@ -16,7 +16,7 @@
 
 ## 3. Distingui Availability Zone, Availability Set e VM Scale Set
 
-**Risposta:** Le **Availability Zones** rappresentano datacenter fisicamente separati e isolati all'interno della stessa regione Azure. Gli **Availability Set** distribuiscono le VM all'interno dello stesso datacenter su diversi *Fault Domain* e *Update Domain*. I **VM Scale Set** invece costituiscono un gruppo gestito ed omogeneo di VM identiche che consente il bilanciamento del carico, il deployment coordinato e la gestione dell'autoscaling.
+**Risposta:** Le **Availability Zones** rappresentano datacenter fisicamente separati e isolati all'interno della stessa regione Azure. Gli **Availability Set** distribuiscono le VM su diversi *Fault Domain* e *Update Domain*. I **VM Scale Set** invece costituiscono un gruppo gestito ed omogeneo di VM identiche che consente il bilanciamento del carico, il deployment coordinato e la gestione dell'autoscaling.
 
 ## 4. Qual è la differenza tra scale up e scale out?
 
@@ -28,7 +28,7 @@
 
 ## 6. Qual è la differenza tra App Service Plan e Web App?
 
-**Risposta:** **App Service Plan** rappresenta l'infrastruttura di calcolo (IaaS/PaaS) e definisce la regione di deployment, il sistema operativo, il livello/tier di prezzo, le funzionalità disponibili e il numero di istanze hardware dedicate. **Web App** rappresenta l'applicazione software effettiva che viene eseguita all'interno dell'App Service Plan.
+**Risposta:** **App Service Plan** rappresenta l'infrastruttura di calcolo (PaaS) e definisce la capacità di calcolo usata dalle applicazioni, la regione di deployment, il sistema operativo, il livello/tier di prezzo, le funzionalità disponibili e il numero di istanze. **Web App** rappresenta l'applicazione software effettiva che viene eseguita all'interno dell'App Service Plan.
 
 ## 7. Qual è la differenza tra Azure Monitor Autoscale e App Service Automatic Scaling?
 
@@ -44,11 +44,11 @@
 
 ## 10. Distingui High Availability, Backup e Disaster Recovery
 
-**Risposta:** La **High Availability** garantisce la continuità operativa ed evita o riduce al minimo i tempi di inattività ridondando le componenti hardware nella stessa regione. Un **Backup** si occupa di salvare copie coerenti di dati e configurazioni nel tempo per consentirne il recupero. Un piano di **Disaster Recovery** definisce strategie e strumenti per replicare l'intero ambiente di lavoro su un'altra regione o infrastruttura, consentendo di ripristinare il servizio a seguito di eventi catastrofici o guasti su larga scala.
+**Risposta:** La **High Availability** garantisce la continuità operativa ed evita o riduce al minimo i tempi di inattività attraverso la ridondanza di componenti hardware, applicative e architetturali all'interno della stessa regione. Un **Backup** si occupa di salvare copie coerenti di dati e configurazioni nel tempo per consentirne il recupero. Un piano di **Disaster Recovery** definisce strategie e strumenti per replicare l'intero ambiente di lavoro su un'altra regione o infrastruttura, consentendo di ripristinare il servizio a seguito di eventi catastrofici o guasti su larga scala.
 
 ## 11. Che cosa indicano RPO e RTO?
 
-**Risposta:** L'**RPO (Recovery Point Objective)** determina la frequenza necessaria dei backup (es. RPO di 1 ora implica un backup ogni ora). L'**RTO (Recovery Time Objective)** invece indica il tempo massimo ammissibile entro il quale il servizio o l'infrastruttura deve essere ripristinata e tornare pienamente operativa dopo l'interruzione (es. RTO di 30 minuti).
+**Risposta:** L'**RPO (Recovery Point Objective)** indica la massima perdita temporale di dati accettabile in seguito a un guasto (es. un RPO di 1 ora indica che è tollerabile perdere al massimo un'ora di dati, obiettivo che può essere soddisfatto tramite backup con opportuna frequenza o altri sistemi di protezione). L'**RTO (Recovery Time Objective)** invece indica il tempo massimo ammissibile entro il quale il servizio o l'infrastruttura deve essere ripristinata e tornare pienamente operativa dopo l'interruzione (es. RTO di 30 minuti).
 
 ## 12. Perché una VM "deallocated" può continuare a generare costi?
 
