@@ -168,9 +168,8 @@ Count    Status    TableName
 
 ## Diagnostic Setting
 
-- esito: Diagnostic setting non creata per autorizzazione insufficiente.
-Activity Log verificato direttamente; KQL verificato con dati sintetici.
-- destinazione:
+- esito: AzureActivity non ancora popolata nel time range osservato.
+- destinazione: Send to Log Analytics workspace
 - AzureActivity disponibile: sì
 - fallback usato, se necessario:
 
