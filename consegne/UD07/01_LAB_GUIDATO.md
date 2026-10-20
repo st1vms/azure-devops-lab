@@ -81,7 +81,7 @@ rg-ud07-ps-test   westeurope Succeeded         {[ManagedBy, PowerShell], [UD, 07
 
 - seconda esecuzione:
 
-```bash
+```powershell
 PS /home/user> $RgName = "rg-ud07-ps-test"
 PS /home/user> $Location = "westeurope"
 PS /home/user>
