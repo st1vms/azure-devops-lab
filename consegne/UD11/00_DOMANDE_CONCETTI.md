@@ -22,7 +22,7 @@
 
 ## 6. A che cosa serve ingress?
 
-**Risposta:** Serve a esporre l'applicazione verso l'esterno, inoltrando il traffico HTTP in arrivo dal FQDN verso la porta interna del container.
+**Risposta:** L'ingress serve a gestire il traffico in ingresso, supportando sia configurazioni esterne che interne per smistare le richieste verso la porta del container.
 
 ## 7. Perché target port deve coincidere con la porta di ascolto dell'applicazione?
 
@@ -38,7 +38,7 @@
 
 ## 10. Che cosa succede tipicamente quando aggiorni l'image di una Container App?
 
-**Risposta:** Viene creata automaticamente una nuova revision immutabile che riflette la modifica della configurazione o dell'immagine.
+**Risposta:** Quando si aggiorna l'image, viene creata una nuova revision che, in modalità single revision, sostituisce la precedente non appena risulta disponibile a ricevere traffico.
 
 ## 11. Perché in UD11 eseguiamo manualmente operazioni che verranno automatizzate in UD13–UD14?
 
@@ -46,7 +46,7 @@
 
 ## 12. Qual è la differenza fra RBAC Registry Permissions e RBAC+ABAC rispetto ai ruoli `AcrPull`/`AcrPush`?
 
-**Risposta:** Nel modello con permessi RBAC classici si utilizzano ruoli come `AcrPull`, mentre nel modello RBAC+ABAC vengono impiegati ruoli specifici focalizzati sui singoli repository.
+**Risposta:** Nel modello con permessi RBAC classici si utilizzano ruoli come `AcrPull`, mentre nel modello RBAC+ABAC vengono impiegati ruoli specifici focalizzati sui singoli repository (come `Container Registry Repository Reader` e `Container Registry Repository Writer`).
 
 ## 13. Perché il self-hosted Agent di UD09 non è necessario per svolgere UD11, pur essendo collegato alla progressione del corso?
 
@@ -58,7 +58,7 @@
 
 ## 15. Che cosa significa scale-to-zero?
 
-**Risposta:** Significa che la Container App può azzerare completamente il numero delle repliche attive quando non riceve traffico, riducendo l'impiego delle risorse.
+**Risposta:** Significa che la Container App può azzerare completamente il numero delle repliche attive quando non riceve traffico, riducendo l'impiego delle risorse, sebbene non azzeri del tutto i costi complessivi di altre risorse persistenti.
 
 ## 16. Quali controlli eseguiresti se il FQDN restituisce errore dopo una nuova revision?
 
