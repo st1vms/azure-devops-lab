@@ -20,8 +20,9 @@ resource "azurerm_storage_account" "lab" {
   allow_nested_items_to_be_public = false
 
   tags = {
-    Course    = "AZ104"
-    UD        = "12"
-    ManagedBy = "Terraform"
+    Course      = "AZ104"
+    UD          = "12"
+    ManagedBy   = "Terraform"
+    Environment = "Training"
   }
 }
