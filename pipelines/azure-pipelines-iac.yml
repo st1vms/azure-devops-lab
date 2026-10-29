@@ -54,7 +54,7 @@ stages:
       displayName: Terraform fmt and validate
 
     - bash: |
-        az bicep lint --file infra/bicep/delivery.bicep
+        az bicep lint --file infra/bicep/delivery-NON-ESISTE.bicep
       displayName: Bicep lint
 
 - stage: Deploy
@@ -82,12 +82,12 @@ stages:
         inlineScript: |
           az deployment group what-if \
             --resource-group "$(deliveryResourceGroup)" \
-            --template-file infra/bicep/delivery.bicep \
+            --template-file infra/bicep/delivery-NON-ESISTE.bicep \
             --parameters location="$(location)"
 
           az deployment group create \
             --name "ud13-delivery-$(Build.BuildId)" \
             --resource-group "$(deliveryResourceGroup)" \
-            --template-file infra/bicep/delivery.bicep \
+            --template-file infra/bicep/delivery-NON-ESISTE.bicep \
             --parameters location="$(location)" \
             --output table
