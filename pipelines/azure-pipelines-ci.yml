@@ -1,12 +1,13 @@
 trigger:
 - main
 
-# Percorso principale UD14: Microsoft-hosted.
+# Agent Microsoft-hosted.
 pool:
   vmImage: ubuntu-latest
 
 variables:
-  dockerRegistryServiceConnection: 'sc-acr-ud14'
+  azureServiceConnection: 'sc-azure-ud13-15'
+  deliveryResourceGroup: 'rg-ud13-15-delivery'
   imageRepository: 'catalog-backend'
   dockerfilePath: '$(Build.SourcesDirectory)/app/catalog-backend-ci/Dockerfile'
   buildContext: '$(Build.SourcesDirectory)/app/catalog-backend-ci'
@@ -60,13 +61,33 @@ stages:
         docker --version
       displayName: Inspect hosted Docker environment
 
-    - task: Docker@2
-      displayName: Build and push to ACR
+    # La sessione Azure usa l'identità federata della service connection ARM.
+    - task: AzureCLI@2
+      displayName: Build and push to ACR using ARM connection
       inputs:
-        command: buildAndPush
-        containerRegistry: '$(dockerRegistryServiceConnection)'
-        repository: '$(imageRepository)'
-        Dockerfile: '$(dockerfilePath)'
-        buildContext: '$(buildContext)'
-        tags: |
-          $(imageTag)
+        azureSubscription: '$(azureServiceConnection)'
+        scriptType: bash
+        scriptLocation: inlineScript
+        inlineScript: |
+          set -euo pipefail
+
+          # Nel Resource Group del laboratorio deve esserci un solo ACR.
+          ACR_COUNT=$(az acr list --resource-group "$DELIVERY_RG" --query 'length(@)' --output tsv)
+          if [ "$ACR_COUNT" != "1" ]; then
+            echo "Atteso un solo ACR in $DELIVERY_RG; trovati: $ACR_COUNT"
+            exit 1
+          fi
+          ACR_NAME=$(az acr list --resource-group "$DELIVERY_RG" --query '[0].name' --output tsv)
+          ACR_LOGIN_SERVER=$(az acr show --name "$ACR_NAME" --query loginServer --output tsv)
+          IMAGE_REF="$ACR_LOGIN_SERVER/$IMAGE_REPOSITORY:$IMAGE_TAG"
+
+          az acr login --name "$ACR_NAME"
+          docker build --file "$DOCKERFILE_PATH" --tag "$IMAGE_REF" "$BUILD_CONTEXT"
+          docker push "$IMAGE_REF"
+          echo "Immagine pubblicata: $IMAGE_REF"
+      env:
+        DELIVERY_RG: '$(deliveryResourceGroup)'
+        IMAGE_REPOSITORY: '$(imageRepository)'
+        IMAGE_TAG: '$(imageTag)'
+        DOCKERFILE_PATH: '$(dockerfilePath)'
+        BUILD_CONTEXT: '$(buildContext)'
