@@ -82,8 +82,8 @@ curl -s http://127.0.0.1:18014/health \
 
 - YAML CI utilizzato: `azure-pipelines-ci-selfhosted.yml`
 - Nome della sola pipeline CI: `azure-pipelines-ci-selfhosted.yml`
-- Prima run (ID, esito osservato o blocco reale):
-- Stage Test (esito):
-- Stage BuildPush (esito):
-- Traccia dei log Agent.Name / OS / MachineName:
-- Stato finale e azioni rinviate alla nuova UD14:
+- Prima run (ID, esito osservato o blocco reale): (`#20261102.1`, Positivo)
+- Stage Test (esito): Positivo
+- Stage BuildPush (esito): Positivo
+- Traccia dei log Agent.Name / OS / MachineName: (`Azure Pipelines 1` / `Ubuntu 26.04.1 LTS` / `runnervmnwato`)
+- Stato finale e azioni rinviate alla nuova UD14: `catalog-backed` pubblicato, cleanup rinviato.
