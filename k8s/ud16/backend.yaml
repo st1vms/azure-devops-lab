@@ -23,7 +23,7 @@ spec:
           type: RuntimeDefault
       containers:
       - name: backend
-        image: localhost/catalog-backend:ud16
+        image: catalog-backend:ud16
         imagePullPolicy: IfNotPresent
         ports:
         - name: http

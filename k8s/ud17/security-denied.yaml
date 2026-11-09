@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: unsafe
+  namespace: ft152-ud17-security
+spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 10001
+    seccompProfile:
+      type: RuntimeDefault
+  containers:
+  - name: backend
+    image: catalog-backend:ud16
+    imagePullPolicy: IfNotPresent
+    env:
+    - name: RUNTIME_DIR
+      value: /tmp/runtime
+    securityContext:
+      allowPrivilegeEscalation: true  # non ammesso da restricted
+      capabilities:
+        drop:
+        - ALL

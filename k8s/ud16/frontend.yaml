@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: localhost/catalog-frontend:ud16
+        image: catalog-frontend:ud16
         imagePullPolicy: IfNotPresent
         ports:
         - name: http

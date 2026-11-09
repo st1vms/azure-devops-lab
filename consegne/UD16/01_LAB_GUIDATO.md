@@ -1,19 +1,5 @@
 # UD16 — Esiti del laboratorio guidato
 
-## Comandi modificati
-
-### Minikube image load
-
-```bash
-minikube image load -p minikube catalog-backend:ud16 catalog-frontend:ud16
-```
-
-in
-
-```bash
-minikube image load -p minikube localhost/catalog-backend:ud16 localhost/catalog-frontend:ud16
-```
-
 ## Configurazione e avvio
 
 Indica ConfigMap, Secret dimostrativo, file montato e immagini utilizzate.
